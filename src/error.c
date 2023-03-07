@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../lib/minishell.h"
 
 static void	print_err_msg(bool is_syserr, char *func, char *msg)
 {
@@ -16,7 +16,7 @@ void	err_msg_and_exit(char *func, char *msg)
 {
 	if (errno && ft_strcmp(msg, SYSERR) == 0)
 		print_err_msg(true, func, strerror(errno));
-	else if (errno && !ft_strcmp(msg, SYSERR) == 0)
+	else if (errno && !(ft_strcmp(msg, SYSERR) == 0))
 		print_err_msg(false, func, msg);
 	else
 	{
@@ -24,7 +24,7 @@ void	err_msg_and_exit(char *func, char *msg)
 		ft_putstr_fd(func, STDERR_FILENO);
 		ft_putstr_fd(".\n", STDERR_FILENO);
 	}
-	msh_destroy();
+	//msh_destroy();
 	if (errno)
 		exit(errno);
 	else

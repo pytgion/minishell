@@ -12,6 +12,7 @@
 # include <dirent.h> //directory shit
 # include <stdlib.h>
 # include <signal.h>
+# include "Libft/libft.h"
 
 
 // DEFINES
@@ -22,11 +23,20 @@ typedef struct s_command_table {
 
 }	t_command_table;
 
-typedef struct s_history {
-	int			num;
+typedef struct s_lexlist {
+	char		type;
 	char		*command;
-	struct s_history	*next;
-	struct s_history	*pre;
-}		t_history;
+	struct s_lexlist *next;
+}	t_lextlist;
 
 #endif
+
+//promt
+void	print_promt1();
+void	print_promt2();
+
+// utils
+int	ft_strcmp(char *str, char *str2);
+
+//error
+void	err_msg_and_exit(char *func, char *msg);
