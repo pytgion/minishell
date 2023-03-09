@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "../lib/minishell.h"
 
 void	print_promt1()
