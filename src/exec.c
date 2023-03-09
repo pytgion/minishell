@@ -17,7 +17,6 @@ void	exec(t_lextlist *lst, char **env, t_lextlist *prev, t_lextlist *tmp)
 		}
 		if (tmp->type == PIPE)
 		{
-			printf("dondupipe\n");
 			close(tmp->fd[0]);
 			dup2(tmp->fd[1], 1);
 			close(tmp->fd[1]);
@@ -32,7 +31,8 @@ void	exec(t_lextlist *lst, char **env, t_lextlist *prev, t_lextlist *tmp)
 		execve(tmp->command[0], &tmp->command[1], env);
 		exit(1);
 	}
-
+	//wait(NULL);
+	//waitpid(pid, status, NULL); forktan pid çek
 	if (prev && prev->type == PIPE)
 	{
 		close(prev->fd[0]);

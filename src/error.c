@@ -14,9 +14,9 @@ static void	print_err_msg(bool is_syserr, char *func, char *msg)
 
 void	err_msg_and_exit(char *func, char *msg)
 {
-	if (errno && ft_strcmp(msg, SYSERR) == 0)
+	if (errno && ft_strncmp(msg, SYSERR, ft_strlen(msg)) == 0)
 		print_err_msg(true, func, strerror(errno));
-	else if (errno && !(ft_strcmp(msg, SYSERR) == 0))
+	else if (errno && !(ft_strncmp(msg, SYSERR, ft_strlen(msg)) == 0))
 		print_err_msg(false, func, msg);
 	else
 	{

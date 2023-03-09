@@ -1,2 +1,6 @@
 Lexer:
 	komut al
+-L/goinfre/oakyuz/homebrew/opt/readline/lib
+-I/goinfre/oakyuz/homebrew/opt/readline/include
+
+gcc *.c -I. ../lib/Libft/libft.a -I/goinfre/oakyuz/homebrew/opt/readline/include/  -L/goinfre/oakyuz/homebrew/opt/readline/lib/ -lreadline
