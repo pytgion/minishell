@@ -112,6 +112,8 @@ int init_lexer(char *line, char **env)
 			spilitret = &spilitret[i + 1];
 			i = -1;
 		}
+		if (!spilitret[i + 1])
+			lst = push_lst(lst, spilitret, 0);
 		//lst = push_lst(lst, spilitret[i], 0);
 		//free(spilitret[i]);
 		i++;

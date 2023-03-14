@@ -1,14 +1,16 @@
 NAME	= minishell
 CC		= gcc
 FLAGS	= -Wall -Wextra -Werror
-SRC		= ./src/*.c
+#src		= ./src/*.c
+#SRC		= $(wildcard ./src/*.c)
+SRC	= $(shell find src -name "*.c")
 LIBFT	= ./lib/Libft/libft.a
-INCLUDE	= -I/lib/minishell.h
+INCLUDE	= -I/lib/minishell.h -I./lib
 
 OBJ		= $(SRC:.c=.o)
 
 %.o:%.c
-	$(CC) $(SRC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 all: $(NAME)
 	@echo "Done!"
@@ -21,7 +23,7 @@ clean:
 	@echo "Cleaned."
 
 fclean:
-	@rm -rf src/*.o
+	@find . -name "*.o" -delete
 	@rm -rf a.out
 
-re: clean fclean
+re: clean fclean all
