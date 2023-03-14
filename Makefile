@@ -8,7 +8,7 @@ INCLUDE	= -I/lib/minishell.h
 OBJ		= $(SRC:.c=.o)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(SRC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 	@echo "Done!"

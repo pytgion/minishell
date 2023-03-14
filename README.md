@@ -9,14 +9,21 @@ https://www.gnu.org/software/bash/manual/bash.html
 - [x] Pass arguments
 - [ ] Make sure if its data safe
 - [ ] Free everything
+- [ ] Error Functions
+- [ ] History
+- [ ] $?
+- [ ] signals
 ### Parser
 - [x] Parse the commands and fill struct
 - [ ] Free everything.
+- [ ] quotes
+- [ ] env variables
 ### Executer 
-- [X] Write exec for non-builtin commands
+- [ ] Write exec for non-builtin commands
 - [ ] Write exec for builtin commands
 - [ ] Care for norminette
 - [ ] Free or close everything. seriously.
+- [ ] env variables
 ### Builtin Commands
 - [ ] echo
 - [ ] pwd

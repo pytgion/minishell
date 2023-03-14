@@ -21,6 +21,7 @@ t_lextlist *create_lst(char **command, char type)
 	ret_val->type = type;
 	ret_val->next = 0;
 	return (ret_val);
+	//freelenecek
 }
 
 t_lextlist *add_lst(t_lextlist *lst, char **command, char type)
