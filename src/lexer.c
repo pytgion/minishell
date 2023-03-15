@@ -14,7 +14,7 @@ t_lextlist *create_lst(char **command, char type)
 	i = 0;
 	while (command[i])
 	{
-		//printf("dondu\n");
+		//?printf("dondu\n");
 		ret_val->command[i] = ft_strdup(command[i]);
 		i++;
 	}
@@ -90,28 +90,12 @@ int init_lexer(char *line, char **env)
 	i = 0;
 	while (spilitret[i])
 	{
-		if (ft_strncmp(spilitret[i], "|", ft_strlen(spilitret[i])) == 0)
-		{
-			spilitret[i] = 0;
-			lst = push_lst(lst, spilitret, PIPE);
-			spilitret = &spilitret[i + 1];
-			//spilitret += i + 1;
-			i = -1;
-		}
-		else if (ft_strncmp(spilitret[i], "&&", ft_strlen(spilitret[i])) == 0)
-		{
-			spilitret[i] = 0;
-			lst = push_lst(lst, spilitret, AND);
-			spilitret = &spilitret[i + 1];
-			i = -1;
-		}
-		else if (ft_strncmp(spilitret[i], ";", ft_strlen(spilitret[i])) == 0)
-		{
-			spilitret[i] = 0;
-			lst = push_lst(lst, spilitret, EXE);
-			spilitret = &spilitret[i + 1];
-			i = -1;
-		}
+		if (is_meta_char(spilitret[i]) == 124)
+			lst = pass_to_arg(lst, spilitret, PIPE, &i);
+		else if (is_meta_char(spilitret[i]) == 59)
+			lst = pass_to_arg(lst, spilitret, EXE, &i);
+		else if (is_meta_char(spilitret[i]) == 60)
+			lst = pass_to_arg(lst, spilitret, REDIRIN, &i);
 		if (!spilitret[i + 1])
 			lst = push_lst(lst, spilitret, 0);
 		//lst = push_lst(lst, spilitret[i], 0);
@@ -119,6 +103,7 @@ int init_lexer(char *line, char **env)
 		i++;
 	}
 
+	//?printf("\nString is=%s\nindex val is %d\n\n", spilitret[0], i);
 	print_lst(lst);
 	exec(lst, env, 0, lst);
 	return (0);

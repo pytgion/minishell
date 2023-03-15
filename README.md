@@ -1,5 +1,5 @@
 # minishell
-Project for Ecole 42 
+Project for Ecole 42
 
 # sources
 https://www.gnu.org/software/bash/manual/bash.html
@@ -18,7 +18,7 @@ https://www.gnu.org/software/bash/manual/bash.html
 - [ ] Free everything.
 - [ ] quotes
 - [ ] env variables
-### Executer 
+### Executer
 - [ ] Write exec for non-builtin commands
 - [ ] Write exec for builtin commands
 - [ ] Care for norminette

@@ -18,9 +18,14 @@
 // DEFINES
 # define	SYSERR	"System Error!\n"
 
-# define PIPE 0
-# define AND 1
-# define EXE 2
+# define PIPE		124
+# define DOLLAR		36
+# define EXE 		59
+# define REDIRIN	60
+# define REDIROUT	62
+# define HDOC		72
+# define APPEND		65
+# define QUOTE		34
 
 typedef struct s_lexlist {
 	char		type;
@@ -42,6 +47,11 @@ void	err_msg_and_exit(char *func, char *msg);
 
 //lexer
 int	init_lexer(char *line, char **env);
+int	is_meta_char(char *line);
+t_lextlist *pass_to_arg(t_lextlist *lst, char **command, char type, int *i);
+t_lextlist *push_lst(t_lextlist *lst, char **command, char type);
+t_lextlist *add_lst(t_lextlist *lst, char **command, char type);
+t_lextlist *create_lst(char **command, char type);
 
 //exec
 void	exec(t_lextlist *lst, char **env, t_lextlist *prev, t_lextlist *tmp);
